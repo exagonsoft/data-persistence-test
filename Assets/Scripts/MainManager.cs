@@ -22,10 +22,14 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    }
+
+    void CreateLevel()
+    {
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
-        
-        int[] pointCountArray = new [] {1,1,2,2,5,5};
+
+        int[] pointCountArray = new[] { 1, 1, 2, 2, 5, 5 };
         for (int i = 0; i < LineCount; ++i)
         {
             for (int x = 0; x < perLine; ++x)
@@ -36,6 +40,13 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
+
+        m_Started = false;
+    }
+
+    private void Awake()
+    {
+        CreateLevel();
     }
 
     private void Update()
@@ -57,7 +68,10 @@ public class MainManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                ClearScene();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                m_GameOver = false;
+                m_Started = false;
             }
         }
     }
@@ -72,5 +86,19 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+    }
+
+    public bool GetGameState()
+    {
+        return m_GameOver;
+    }
+
+    void ClearScene()
+    {
+        GameObject[] _bricks_left = GameObject.FindGameObjectsWithTag("Brick");
+        foreach (GameObject _brick in _bricks_left)
+        {
+            Destroy(_brick);
+        }
     }
 }

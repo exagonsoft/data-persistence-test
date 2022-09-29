@@ -5296,7 +5296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d110623a642692246a42fbc2d8d89884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BrickPrefab: {fileID: 897975713663390409, guid: 63f25b9733d2bcd4fa2ff6de1264c739, type: 3}
+  BrickPrefab: {fileID: 1784211061373037356, guid: 63f25b9733d2bcd4fa2ff6de1264c739, type: 3}
   LineCount: 6
   Ball: {fileID: 177912862}
   ScoreText: {fileID: 188020406}
@@ -10503,7 +10503,7 @@ GameObject:
   - component: {fileID: 840174544}
   m_Layer: 3
   m_Name: LavaSurface
-  m_TagString: Untagged
+  m_TagString: Lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10550,7 +10550,7 @@ GameObject:
   - component: {fileID: 850602369}
   m_Layer: 6
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10603,7 +10603,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: cac86b29595a4464d9a5d8538b57b9b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15458,9 +15458,10 @@ GameObject:
   - component: {fileID: 1066359101}
   - component: {fileID: 1066359100}
   - component: {fileID: 1066359104}
+  - component: {fileID: 1066359105}
   m_Layer: 0
   m_Name: DeathZone
-  m_TagString: Untagged
+  m_TagString: Lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -15557,6 +15558,104 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 450625942}
+  _explotion: {fileID: 7181891285749184407, guid: 7d70a93701b63814882e9c709146b8c9, type: 3}
+  _ball_destroy: {fileID: 8300000, guid: dc3037c6bd912f74b878f3349e231889, type: 3}
+--- !u!82 &1066359105
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066359099}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1288645155
 GameObject:
   m_ObjectHideFlags: 0
@@ -15571,7 +15670,7 @@ GameObject:
   - component: {fileID: 1288645157}
   m_Layer: 6
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -15624,7 +15723,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: cac86b29595a4464d9a5d8538b57b9b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15665,7 +15764,7 @@ GameObject:
   - component: {fileID: 1550576933}
   m_Layer: 6
   m_Name: Borders
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -15817,7 +15916,7 @@ GameObject:
   - component: {fileID: 1634186526}
   m_Layer: 6
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -15870,7 +15969,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: cac86b29595a4464d9a5d8538b57b9b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21012,6 +21111,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: space_board
       objectReference: {fileID: 0}
+    - target: {fileID: 1158529242388307106, guid: 061cb222653d99144a504899a6305db4, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1970391467633755672, guid: 061cb222653d99144a504899a6305db4, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -21063,6 +21166,34 @@ PrefabInstance:
     - target: {fileID: 2076869595178697773, guid: 061cb222653d99144a504899a6305db4, type: 3}
       propertyPath: m_Center.z
       value: 0.009493232
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076869596542100418, guid: 061cb222653d99144a504899a6305db4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b171e0a86dd2cfb4d92092061cb1d5f1, type: 2}
+    - target: {fileID: 2076869596542100422, guid: 061cb222653d99144a504899a6305db4, type: 3}
+      propertyPath: _explotion
+      value: 
+      objectReference: {fileID: 7181891285749184407, guid: 7d70a93701b63814882e9c709146b8c9, type: 3}
+    - target: {fileID: 2076869596542100422, guid: 061cb222653d99144a504899a6305db4, type: 3}
+      propertyPath: _brick_collide
+      value: 
+      objectReference: {fileID: 8300000, guid: dc3037c6bd912f74b878f3349e231889, type: 3}
+    - target: {fileID: 2076869596542100422, guid: 061cb222653d99144a504899a6305db4, type: 3}
+      propertyPath: _player_collide
+      value: 
+      objectReference: {fileID: 8300000, guid: ec7f98911426b9747bc1ab2227e57014, type: 3}
+    - target: {fileID: 2076869596542100422, guid: 061cb222653d99144a504899a6305db4, type: 3}
+      propertyPath: _brick_explotion
+      value: 
+      objectReference: {fileID: 7181891285749184407, guid: 4556f60060141964aa3ddd9155cea2f5, type: 3}
+    - target: {fileID: 3767578714185012370, guid: 061cb222653d99144a504899a6305db4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540135755194349745, guid: 061cb222653d99144a504899a6305db4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 061cb222653d99144a504899a6305db4, type: 3}

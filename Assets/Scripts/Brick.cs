@@ -9,12 +9,13 @@ public class Brick : MonoBehaviour
     public UnityEvent<int> onDestroyed;
     
     public int PointValue;
-
+    public MaterialPropertyBlock block;
+    public GameObject _explotion;
     void Start()
     {
         var renderer = GetComponentInChildren<Renderer>();
 
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
+        block = new MaterialPropertyBlock();
         switch (PointValue)
         {
             case 1 :
@@ -38,6 +39,12 @@ public class Brick : MonoBehaviour
         onDestroyed.Invoke(PointValue);
         
         //slight delay to be sure the ball have time to bounce
-        Destroy(gameObject, 0.2f);
+        Destroy(gameObject, 0.1f);
     }
+
+    public Color GetBrickColor()
+    {
+        return block.GetColor("_BaseColor");
+    }
+    
 }

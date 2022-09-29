@@ -4819,7 +4819,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4e809d7a4c9982e4382286aa1e90c3a2, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4880,7 +4880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4558811315365428126}
   m_Layer: 0
-  m_Name: BrickExplotion
+  m_Name: BallExplotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

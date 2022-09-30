@@ -11,12 +11,22 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text LevelText;
+    public Text DificultText;
+    public Text GameOverInfoText;
+    public Text GameWinInfoText;
     public GameObject GameOverText;
+    public GameObject LevelClearPanel;
+    public GameObject PauseMenuPanel;
     
     private bool m_Started = false;
     private int m_Points;
     
     private bool m_GameOver = false;
+    private bool m_GameWin = false;
+    private int _bricks_left;
+    private int _current_level = 1;
+    private float _dificult_level = 1.25f;
 
     
     // Start is called before the first frame update
@@ -28,6 +38,9 @@ public class MainManager : MonoBehaviour
     {
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
+        _bricks_left = perLine * LineCount;
+        LevelText.text = $"Current Level : {_current_level.ToString()}" ;
+        DificultText.text = $"Current Dificult : {_dificult_level.ToString("0.00")}" ;
 
         int[] pointCountArray = new[] { 1, 1, 2, 2, 5, 5 };
         for (int i = 0; i < LineCount; ++i)
@@ -36,7 +49,7 @@ public class MainManager : MonoBehaviour
             {
                 Vector3 position = new Vector3(-1.5f + step * x, 2.5f + i * 0.3f, 0);
                 var brick = Instantiate(BrickPrefab, position, Quaternion.identity);
-                brick.PointValue = pointCountArray[i];
+                brick.PointValue = pointCountArray[i] * _current_level;
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
@@ -73,6 +86,25 @@ public class MainManager : MonoBehaviour
                 m_GameOver = false;
                 m_Started = false;
             }
+        }else if (m_GameWin)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameObject _player = GameObject.FindGameObjectWithTag("Player");
+                _player.transform.position = new Vector3(0f, _player.transform.position.y, _player.transform.position.z);
+                CreateLevel();
+                m_GameWin = false;
+                m_Started = false;
+            }
+        }
+
+        if(!m_GameWin && !m_GameOver)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Time.timeScale = 0;
+                PauseMenuPanel.SetActive(true);
+            }
         }
     }
 
@@ -82,9 +114,30 @@ public class MainManager : MonoBehaviour
         ScoreText.text = $"Score : {m_Points}";
     }
 
+    public void CheckWin()
+    {
+        _bricks_left--;
+        if(_bricks_left <= 0)
+        {
+            GameWin();
+        }
+    }
+
+    private void GameWin()
+    {
+        GetComponent<EffectsManager>().OnWin();
+        GameWinInfoText.text = $"Actual Score : {m_Points}";
+        Ball _ball = GameObject.Find("Ball").GetComponent<Ball>();
+        _ball.ResetPosition();
+        _current_level++;
+        m_GameWin = true;
+        LevelClearPanel.SetActive(false);
+    }
+
     public void GameOver()
     {
         m_GameOver = true;
+        GameOverInfoText.text = $"Your Score : {m_Points}";
         GameOverText.SetActive(true);
     }
 
@@ -100,5 +153,18 @@ public class MainManager : MonoBehaviour
         {
             Destroy(_brick);
         }
+    }
+
+    public float GetDificulty()
+    {
+        return _dificult_level;
+    }
+
+    public void ResetLevel()
+    {
+        ClearScene();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        m_GameOver = false;
+        m_Started = false;
     }
 }

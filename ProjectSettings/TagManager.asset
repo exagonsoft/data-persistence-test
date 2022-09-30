@@ -15,7 +15,7 @@ TagManager:
   - Water
   - UI
   - Box
-  - 
+  - BackGrounds
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 540093905
     locked: 0

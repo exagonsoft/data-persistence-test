@@ -6,6 +6,7 @@ public class EffectsManager : MonoBehaviour
 {
     public GameObject _lava_spark_effect;
     public GameObject _lava_river;
+    public GameObject _firework;
     private float _spawn_delay = 3f;
     private float _spawn_interval;
     void Start()
@@ -20,6 +21,11 @@ public class EffectsManager : MonoBehaviour
         
     }
 
+    public void OnWin()
+    {
+        InvokeRepeating("SpawnFirework", 0.1f, 1f);
+    }
+
     void SpawnLavaSpark()
     {
         if (_lava_river != null)
@@ -30,5 +36,15 @@ public class EffectsManager : MonoBehaviour
             Destroy(_effect, 1f);
         }
         
+    }
+
+    void SpawnFirework() {
+        if (_firework != null)
+        {
+            float _y_axys = Random.Range(2f, 4.41f);
+            float _x_axys = Random.Range(-1.6f, 1.6f);
+            GameObject _effect_firework = Instantiate(_firework, new Vector3(_x_axys, _y_axys, 0f), Quaternion.identity);
+            Destroy(_effect_firework, 2f);
+        }
     }
 }

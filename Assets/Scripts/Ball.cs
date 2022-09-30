@@ -11,11 +11,13 @@ public class Ball : MonoBehaviour
     public AudioClip _brick_collide;
     public AudioClip _player_collide;
     private AudioSource _audio_player;
+    private float _difcult_level;
 
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         _audio_player = GetComponent<AudioSource>();
+        SetDificultLevel();
     }
     
     private void OnCollisionExit(Collision other)
@@ -23,7 +25,7 @@ public class Ball : MonoBehaviour
         var velocity = m_Rigidbody.velocity;
         
         //after a collision we accelerate a bit
-        velocity += velocity.normalized * 0.01f;
+        velocity += velocity.normalized * 0.01f * _difcult_level;
         
         //check if we are not going totally vertically as this would lead to being stuck, we add a little vertical force
         if (Vector3.Dot(velocity.normalized, Vector3.up) < 0.1f)
@@ -49,9 +51,10 @@ public class Ball : MonoBehaviour
 
                     GameObject _effect = Instantiate(_brick_explotion, transform.position, Quaternion.identity);
                     _audio_player.PlayOneShot(_brick_collide);
-
                     Destroy(other.gameObject);
-                    Destroy(_effect, 0.2f);
+                    MainManager _manager = GameObject.Find("MainManager").GetComponent<MainManager>();
+                    _manager.CheckWin();
+                    Destroy(_effect, 0.4f);
                     break;
                 }
             case "Player":
@@ -68,6 +71,19 @@ public class Ball : MonoBehaviour
                 break;
         }
 
+    }
+
+    void SetDificultLevel()
+    {
+        MainManager _manager = GameObject.Find("MainManager").GetComponent<MainManager>();
+        _difcult_level = _manager.GetDificulty();
+    }
+
+    public void ResetPosition()
+    {
+        Rigidbody _ball = transform.GetComponent<Rigidbody>();
+        _ball.velocity = new Vector3(0f, 0f);
+        transform.position = new Vector3(0, 0.3000001f, 0);
     }
 
 }

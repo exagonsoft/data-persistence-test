@@ -26,6 +26,6 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnHigthScores()
     {
-
+        SceneManager.LoadScene(2);
     }
 }

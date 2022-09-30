@@ -10,6 +10,7 @@ public class MainManager : MonoBehaviour
     public int LineCount = 6;
     public Rigidbody Ball;
 
+    public Text PlayerName;
     public Text ScoreText;
     public Text LevelText;
     public Text DificultText;
@@ -27,11 +28,13 @@ public class MainManager : MonoBehaviour
     private int _bricks_left;
     private int _current_level = 1;
     private float _dificult_level = 1.25f;
+    private GameManager _gaManager;
 
     
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     void CreateLevel()
@@ -41,6 +44,7 @@ public class MainManager : MonoBehaviour
         _bricks_left = perLine * LineCount;
         LevelText.text = $"Current Level : {_current_level.ToString()}" ;
         DificultText.text = $"Current Dificult : {_dificult_level.ToString("0.00")}" ;
+        PlayerName.text = _gaManager.GetPlayerName();
 
         int[] pointCountArray = new[] { 1, 1, 2, 2, 5, 5 };
         for (int i = 0; i < LineCount; ++i)
@@ -59,6 +63,7 @@ public class MainManager : MonoBehaviour
 
     private void Awake()
     {
+        _gaManager = GameManager.gmInstance;
         CreateLevel();
     }
 

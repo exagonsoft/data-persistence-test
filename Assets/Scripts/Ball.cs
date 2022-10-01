@@ -18,6 +18,7 @@ public class Ball : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         _audio_player = GetComponent<AudioSource>();
         SetDificultLevel();
+        transform.parent = GameObject.Find("space_board").transform;
     }
     
     private void OnCollisionExit(Collision other)
@@ -83,7 +84,8 @@ public class Ball : MonoBehaviour
     {
         Rigidbody _ball = transform.GetComponent<Rigidbody>();
         _ball.velocity = new Vector3(0f, 0f);
-        transform.position = transform.parent.position;
+        transform.parent = GameObject.Find("space_board").transform;
+        transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y + 0.300f, transform.parent.position.y);
     }
 
 }

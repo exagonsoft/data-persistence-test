@@ -143,6 +143,8 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverInfoText.text = $"Your Score : {m_Points}";
+        GameManager _gaManager = GameManager.gmInstance;
+        _gaManager.SaveScore(m_Points.ToString());
         GameOverText.SetActive(true);
     }
 

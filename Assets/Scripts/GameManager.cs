@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -91,7 +92,20 @@ public class GameManager : MonoBehaviour
         {
             _listResoult = null;
         }
-
+        //Sorting the list
+        for (int ilist = 0; ilist < _listResoult.Scores.Count; ilist++)
+        {
+            for (int isublist = ilist +1; isublist < _listResoult.Scores.Count; isublist++)
+            {
+                if(Convert.ToInt32(_listResoult.Scores[isublist].Score) > Convert.ToInt32(_listResoult.Scores[ilist].Score))
+                {
+                    //swap
+                    ScoreRecord _tempRecord = _listResoult.Scores[ilist];
+                    _listResoult.Scores[ilist] = _listResoult.Scores[isublist];
+                    _listResoult.Scores[isublist] = _tempRecord;
+                }
+            }
+        }
         return _listResoult;
     }
 }

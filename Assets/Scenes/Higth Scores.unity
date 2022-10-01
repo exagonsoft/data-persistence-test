@@ -1192,6 +1192,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _container: {fileID: 1359510295}
   _item: {fileID: 8714560663903510739, guid: f2d41e6eeecacd546a49452cb60d3123, type: 3}
+  _silverStar: {fileID: 21300000, guid: 68948e3ce7678b541a020b9de1437083, type: 3}
+  _goldStar: {fileID: 21300000, guid: 9a138a73d12ac1045b09594de6bac79b, type: 3}
+  _bronceStar: {fileID: 21300000, guid: 27cc557c64a3e8d418a0d4a9f8a91909, type: 3}
+  _none: {fileID: 21300000, guid: 914c763a54283bd4a98b7dc6e73676b2, type: 3}
 --- !u!1 &1096935681
 GameObject:
   m_ObjectHideFlags: 0

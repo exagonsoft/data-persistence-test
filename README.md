@@ -41,6 +41,14 @@
 - *DontDestroyOnLoad function used to handle the* <br /> *data transition between scenes*
 - *Use a file to save the data in order to make it* <br /> *persist between Sessions*
 
+## ScreenShoots
+<p align="center">
+<img src="Assets/Textures/ScreenShoots/MainMenu.png" alt="Main Menu" width="250" height="120">
+<img src="Assets/Textures/ScreenShoots/Settings.png" alt="Logo" width="250" height="120">
+<img src="Assets/Textures/ScreenShoots/HighScores.png" alt="Logo" width="250" height="120">
+<img src="Assets/Textures/ScreenShoots/PersonalInfo.png" alt="Logo" width="250" height="120">
+<img src="Assets/Textures/ScreenShoots/GamePLay.png" alt="Logo" width="250" height="120">
+</p>
 
 ## Acknowledgements
 

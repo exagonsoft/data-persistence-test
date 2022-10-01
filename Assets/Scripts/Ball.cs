@@ -83,7 +83,7 @@ public class Ball : MonoBehaviour
     {
         Rigidbody _ball = transform.GetComponent<Rigidbody>();
         _ball.velocity = new Vector3(0f, 0f);
-        transform.position = new Vector3(0, 0.3000001f, 0);
+        transform.position = transform.parent.position;
     }
 
 }

@@ -45,6 +45,14 @@ public class GameManager : MonoBehaviour
         public string Score;
     }
 
+    [System.Serializable]
+    public class Settings
+    {
+        public float MainVolume;
+        public float SFXVolume;
+        public int AntiAliacingValue;
+    }
+
     public void SaveScore(string _score)
     {
         ScoresList _actualScores = LoadScores();
@@ -107,5 +115,37 @@ public class GameManager : MonoBehaviour
             }
         }
         return _listResoult;
+    }
+
+    public void SaveSettings(float _mainVolume, float _sfxVolume, int _videoOption)
+    {
+        Settings _sett = new Settings();
+
+        _sett.MainVolume = _mainVolume;
+        _sett.SFXVolume = _sfxVolume;
+        _sett.AntiAliacingValue = _videoOption;
+
+        string json = JsonUtility.ToJson(_sett);
+        File.WriteAllText(Application.persistentDataPath + "/settings.json", json);
+    }
+
+    public Settings GetSettings()
+    {
+        Settings _actualSettings = new Settings();
+        string path = Application.persistentDataPath + "/settings.json";
+
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            _actualSettings = JsonUtility.FromJson<Settings>(json);
+        }
+        else
+        {
+            _actualSettings.MainVolume = 1;
+            _actualSettings.SFXVolume = 1;
+            _actualSettings.AntiAliacingValue = 0;
+        }
+
+            return _actualSettings;
     }
 }

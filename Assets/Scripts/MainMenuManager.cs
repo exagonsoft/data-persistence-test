@@ -8,7 +8,16 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject _infoMenu;
+    public GameObject _settingsMenu;
     public Text _name;
+    private AudioSource _player;
+
+    private void Start()
+    {
+        _player = GetComponent<AudioSource>();
+        OnChangeSettings();
+    }
+
     public void OnExit() {
         #if UNITY_EDITOR
            EditorApplication.ExitPlaymode();
@@ -31,11 +40,31 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnSettings()
     {
-
+        _settingsMenu.SetActive(true);
     }
 
     public void OnHigthScores()
     {
         SceneManager.LoadScene(2);
+    }
+
+    public void OnInfoCancel()
+    {
+        _infoMenu.SetActive(false);
+    }
+
+    public void OnSettingsCancel()
+    {
+        _settingsMenu.SetActive(false);
+    }
+
+    public void OnSettingsAccept()
+    {
+    }
+
+    public void OnChangeSettings()
+    {
+        GameManager.Settings settings = GameManager.gmInstance.GetSettings();
+        _player.volume = settings.MainVolume;
     }
 }

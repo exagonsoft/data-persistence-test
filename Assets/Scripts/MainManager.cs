@@ -19,6 +19,7 @@ public class MainManager : MonoBehaviour
     public GameObject GameOverText;
     public GameObject LevelClearPanel;
     public GameObject PauseMenuPanel;
+    public Text Record;
     
     private bool m_Started = false;
     private int m_Points;
@@ -42,6 +43,8 @@ public class MainManager : MonoBehaviour
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         _bricks_left = perLine * LineCount;
+        GameManager.ScoreRecord _record = GameManager.gmInstance.LoadScores().Scores[0];
+        Record.text = _record.PlayerName + ": " + _record.Score;
         LevelText.text = $"Current Level : {_current_level.ToString()}" ;
         DificultText.text = $"Current Dificult : {_dificult_level.ToString("0.00")}" ;
         PlayerName.text = _gaManager.GetPlayerName();
